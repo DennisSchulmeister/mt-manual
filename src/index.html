@@ -2,33 +2,247 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>__Document Title__</title>
+        <title>mini-tutorial.js manual</title>
         <script src="index.js"></script>
     </head>
     <body class="hidden">
         <!-- Page Header and Table of Contents -->
-        <h1>__Document Title__</h1>
+        <h1>mini-tutorial.js manual</h1>
         <p class="subtitle">
-            Catchphrase or subtitle of the document
+            Example and documentation for mini-tutorial.js
         </p>
 
         <section id="toc" data-title="Table of Contents"></section>
 
         <!-- Document chapters -->
-        <section data-title="First Chapter">
+        <section data-title="What is mini-tutorial.js?">
+            <p>
+                Basically your are looking at it right now. <tt>mini-tutorial.js</tt> is a clean
+                and simple JavaScript application (consisting of only one class and one style sheet),
+                which allows you to create beautiful HTML-based documentation and tutorials
+                without much effort. All content is contained in a single HTML file using plain
+                and simple HTML markup.
+            </p>
+            <p>
+                The JavaScript part renders a simple Table of Contents, a few navigation links
+                at the bottom and makes sure that only one chapter at a time is visible. This
+                allows the reader to read the document like a simple book without much scrolling.
+                Also this makes larger documents appear not as overwhelming and be easier to
+                navigate.
+            </p>
+            <p>
+                Originally I created <tt>mini-tutorial.js</tt> for
+                <a href="https://www.wpvs.de/" target="_blank">my lectures at DHBW Karlsruhe</a>
+                when I needed a simple template to create online tutorials for my students. It is,
+                if you will, the little sister of my other project
+                <tt><a href="https://github.com/DennisSchulmeister/lecture-slides.js" target="_blank">lecture-slides.js</a></tt>,
+                which is a full-blown HTML slideshow maker with a twist. As such both projects
+                share the same keyboard shortcuts and basic appearance.
+            </p>
+            <p>
+                This manual of course has also been written with <tt>mini-tutorial.js</tt>.
+                So just by reading some of its chapters you already get a good feeling
+                of what <tt>mini-tutorial.js</tt> and how it looks like. But if you like
+                you can completely change the looks of your documents by writing your own
+                style sheet. With <tt>mini-tutorial.js</tt> you have all the freedom you
+                want, because at the end of the day it still is just HTML, CSS and tiny
+                little bit of JavaScript.
+            </p>
+        </section>
+
+        <section data-title="Using the keyboard shortcuts">
+            <p>
+                Of course you can easily navigate between chapters with your mouse or the
+                touchscreen on mobile devices. Software developers however also appreciate
+                keyboard shortcuts. So here you are. They shortcuts are the same as for
+                <tt>lecture-slides.js</tt>, where I have simply copied the code from:
+            </p>
+            <ul>
+                <li>
+                    <kbd>Arrow Left</kbd>: Previous Chapter
+                </li>
+                <li>
+                    <kbd>Arrow Right</kbd>, <kbd>Space</kbd>, <kbd>ENTER</kbd> or <kbd>N</kbd>: Next Chapter
+                </li>
+            </ul>
+            <p>
+                Go, give it a try!
+            </p>
+        </section>
+
+        <section data-title="Getting started – Downloading the template">
+            <p>
+                Getting startet with <tt>mini-tutorial.js</tt> is easy. But the make it
+                even easier I have prepared a template project, which you can find on
+                GitHub: <a href="https://github.com/DennisSchulmeister/mt-template" target="_blank">mt-template</a>.
+                This project contains everything you need to write your own documents:
+            </p>
+            <ul>
+                <li>
+                    It uses <a href="https://www.npmjs.com/" target="_blank">npm</a> for
+                    dependencies and useful tools
+                </li>
+                <li>
+                    It uses the highly recommended <a href="https://parceljs.org/" target="_blank">Parcel JS</a>
+                </li>
+                <li>
+                    It contains all needed directories and files (which are very little)
+                </li>
+            </ul>
+            <p>
+                Simply download the template project by clicking
+                <b>Clone or download</b> » <b>Download ZIP</b> on the GitHub
+                page and extract it anywhere on your computer. The start by
+                editing the following files:
+            </p>
+            <ul>
+                <li>
+                    <b><tt>LICENSE</tt>:</b> Either delete this file or change it the
+                    license of your choice.
+                </li>
+                <li>
+                    <b><tt>README.md</tt>:</b> The same as with <tt>LICENSE</tt>. Either
+                    delete it, if you don't want to publish the source code anyway, or
+                    change it according to your needs.
+                </li>
+                <li>
+                    <b><tt>src/index.html</tt>:</b> Put your document content here.
+                </li>
+            </ul>
+            <p>
+                That's all there is. While working on a document you will finde the following
+                commands useful (executing them on the command line from within the project
+                directory, of course):
+            </p>
+            <ul>
+                <li>
+                    <code>npm install</code> to install all dependencies
+                </li>
+                <li>
+                    <code>npm run start</code> to open a browser for a live preview
+                </li>
+                <li>
+                    <code>npm run build</code> build a static version for uploading on a web server
+                </li>
+                <li>
+                    <code>npm run watch</code> rebuild after each change without starting a local server
+                </li>
+                <li>
+                    <code>npm run clean</code> just clean the dist directory
+                </li>
+            </ul>
+            <p>
+                When done, build the document and upload the content of the <tt>dist</tt>-directory
+                to a web server.
+            </p>
+        </section>
+
+        <section data-title="How to add chapters to a document?">
+            <p>
+                Adding new chapters is easy. Here you can see how the template
+                HTML file looks like:
+            </p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+        &lt;title&gt;__Document Title__&lt;/title&gt;
+        &lt;script src="index.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body class="hidden"&gt;
+        &lt;!-- Page Header and Table of Contents --&gt;
+        &lt;h1&gt;__Document Title__&lt;/h1&gt;
+        &lt;p class="subtitle"&gt;
+            Catchphrase or subtitle of the document
+        &lt;/p&gt;
+
+        &lt;section id="toc" data-title="Table of Contents"&gt;&lt;/section&gt;
+
+        &lt;!-- Document chapters --&gt;
+        &lt;section data-title="First Chapter"&gt;
             This is chapter one.
-        </section>
+        &lt;/section&gt;
 
-        <section data-title="Second Chapter">
+        &lt;section data-title="Second Chapter"&gt;
             This is chapter two.
+        &lt;/section&gt;
+
+        &lt;!-- Navigation --&gt;
+        &lt;nav&gt;&lt;/nav&gt;
+
+        &lt;!-- Copyright --&gt;
+        &lt;footer&gt;
+            © Your copyright information here
+        &lt;/footer&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p>
+                As you can see, each chapter is just a <code>&lt;section&gt;</code> element
+                with a <code>data-title</code> attribute. The title will be shown on the
+                Table of Contents and above the chapter's content. Simply add more
+                <code>&lt;section&gt;</code> elements to add new chapters and watch your
+                browser automagically reload the page.
+            </p>
+            <p>
+                All other HTML elements can be changed as you wish to apply some chrome.
+                Just leave the <code>&lt;section id ="toc"&gt;</code> and <code>&lt;nav&gt;</code>
+                in place to get a Table of Contents and the navigation links.
+            </p>
         </section>
 
-        <section data-title="Third Chapter">
-            This is chapter three.
+        <section data-title="I thought mini-tutorial.js had no dependencies">
+            <p>
+                Well, it hasn't. If you like you can simply copy the files <tt>mini-slides.js</tt>
+                and <tt>themes/white.css</tt> over to your project and create static HTML page
+                without any external dependency at all. The template project however uses
+                <tt>shelljs</tt> and <tt>parcel-bundler</tt> to provide some minimal cross-platform
+                tooling.
+            </p>
+            <p>
+                Having <tt>npm</tt> and these two dev-dependencies in place you don't have to duplicate
+                the <tt>mini-tutorial.js</tt> code for each and every document. Also you get a live
+                preview in your browser with hot-reloading and a minified and pruned JavaScript bundle
+                with <tt>mini-tutorial.js</tt> and all other JavaScript libraries you might want to use
+                for free.
+            </p>
+            <p>
+                As an example consider this document. On the previous page we had a syntax highlighted
+                code box. All I had to do was to add <tt>highlight.js</tt> as another dev-dependency
+                with <code>npm add --save-dev highlight.js</code> and add change <tt>src/index.js</tt>
+                to this:
+            </p>
+<pre><code class="javascript">import MiniTutorial from "mini-tutorial.js";
+import mtTheme from "mini-tutorial.js/themes/white.css";
+
+import hljs from "highlight.js";
+import hljsStyle from "highlight.js/styles/atom-one-light.css";
+
+window.addEventListener("load", () => {
+    let mt = new MiniTutorial();
+    mt.start();
+
+    document.querySelectorAll("pre code").forEach(el => hljs.highlightBlock(el));
+});</code></pre>
+            <p>
+                By importing <tt>highlight.js</tt> from <tt>src/index.js</tt> Parcel JS takes care
+                of the rest. The new library will be included in the final JavaScript bundle and
+                all unused parts of it will automatically be stripped. The final bundle will then
+                be minified to conserve even more bandwidth.
+            </p>
+            <p>
+                It's just a tiny bit of tooling which makes a huge impact. Bravo to the Parcel JS
+                developers!
+            </p>
         </section>
 
-        <section data-title="Fourth Chapter">
-            This is chapter four.
+        <section data-title="Building more than one document">
+            <p>
+                If you look closely at <tt>package.json</tt> in the template project,
+                you will see that the parcel bundler is called with a <tt>src/*.html</tt>
+                glob pattern. This makes it easy to build several projects from the
+                same source tree. Simply copy the <tt>src/index.html</tt> file and
+                create as many HTML files as you want to build documents.
+            </p>
         </section>
 
         <!-- Navigation -->
@@ -36,7 +250,18 @@
 
         <!-- Copyright -->
         <footer>
-            © Your copyright information here
+            <table>
+                <tr>
+                    <td style="padding-right: 1em;">
+                        <img src="https://licensebuttons.net/l/by/4.0/88x31.png" />
+                    </td>
+                    <td>
+                        © 2018 Dennis Schulmeister-Zimolong &lt;dennis@pingu-mail.de&gt; <br/>
+                        This manual is licensed under a
+                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
+                    </td>
+                </tr>
+            </table>
         </footer>
     </body>
 </html>
