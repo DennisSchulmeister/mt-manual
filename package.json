@@ -1,21 +1,20 @@
 {
-    "name": "mt-template",
+    "name": "mt-manual",
     "version": "1.0.0",
-    "description": "mini-tutorial.js template project",
+    "description": "mini-tutorial.js documentation and example",
     "author": "Dennis Schulmeister-Zimolong",
-    "license": "BSD-3-Clause",
-    "homepage": "https://github.com/DennisSchulmeister/mt-template",
+    "license": "CC-BY",
+    "homepage": "https://github.com/DennisSchulmeister/mt-manual",
     "bugs": {
-        "url": "https://github.com/DennisSchulmeister/mt-template/issues"
+        "url": "https://github.com/DennisSchulmeister/mt-manual/issues"
     },
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/DennisSchulmeister/mt-template.git"
+        "url": "git+ssh://git@github.com/DennisSchulmeister/mt-manual.git"
     },
     "keywords": [
         "mini-tutorial.js",
-        "template",
         "documentation",
         "manual"
     ],
