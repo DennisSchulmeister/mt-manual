@@ -214,14 +214,16 @@
 <pre><code class="javascript">import MiniTutorial from "mini-tutorial.js";
 import mtTheme from "mini-tutorial.js/themes/white.css";
 
-import hljs from "highlight.js";
+import hljs from 'highlight.js/lib/highlight'
+import hljsLangXML from 'highlight.js/lib/languages/xml'
 import hljsStyle from "highlight.js/styles/atom-one-light.css";
 
-window.addEventListener("load", () => {
+window.addEventListener("load", () =&gt; {
     let mt = new MiniTutorial();
     mt.start();
 
-    document.querySelectorAll("pre code").forEach(el => hljs.highlightBlock(el));
+    hljs.registerLanguage('html', hljsLangXML);
+    document.querySelectorAll("pre code").forEach(el =&gt; hljs.highlightBlock(el));
 });</code></pre>
             <p>
                 By importing <tt>highlight.js</tt> from <tt>src/index.js</tt> Parcel JS takes care
