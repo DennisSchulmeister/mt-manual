@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
     let mt = new MiniTutorial();
     mt.start();
 
-    hljs.registerLanguage('html', hljsLangXML);
-    hljs.registerLanguage('javascript', hljsLangJS);
+    hljs.registerLanguage("html", hljsLangXML);
+    hljs.registerLanguage("javascript", hljsLangJS);
     document.querySelectorAll("pre code").forEach(el => hljs.highlightBlock(el));
 });

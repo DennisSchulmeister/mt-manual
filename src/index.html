@@ -142,40 +142,49 @@
                 Adding new chapters is easy. Here you can see how the template
                 HTML file looks like:
             </p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-    &lt;head&gt;
-        &lt;meta charset="utf-8" /&gt;
-        &lt;title&gt;__Document Title__&lt;/title&gt;
-        &lt;script src="index.js"&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body class="hidden"&gt;
-        &lt;!-- Page Header and Table of Contents --&gt;
-        &lt;h1&gt;__Document Title__&lt;/h1&gt;
-        &lt;p class="subtitle"&gt;
-            Catchphrase or subtitle of the document
-        &lt;/p&gt;
+            <pre data-gobble>
+                <code class="html" data-gobble>
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html lang="en"&gt;
+                        &lt;head&gt;
+                            &lt;meta charset="utf-8" /&gt;
+                            &lt;title&gt;__Document Title__&lt;/title&gt;
+                            &lt;script src="index.js"&gt;&lt;/script&gt;
+                        &lt;/head&gt;
+                        &lt;body class="hidden"&gt;
+                            &lt;!-- Page Header --&gt;
+                            &lt;header&gt;
+                                &lt;h1&gt;__Document Title__&lt;/h1&gt;
+                                &lt;p class="subtitle"&gt;
+                                    Catchphrase or subtitle of the document
+                                &lt;/p&gt;
+                            &lt;/header&gt;
 
-        &lt;section id="toc" data-title="Table of Contents"&gt;&lt;/section&gt;
+                            &lt;main&gt;
+                                &lt;!-- Table of Contents --&gt;
+                                &lt;section id="toc" data-title="Table of Contents"&gt;&lt;/section&gt;
 
-        &lt;!-- Document chapters --&gt;
-        &lt;section data-title="First Chapter"&gt;
-            This is chapter one.
-        &lt;/section&gt;
+                                &lt;!-- Document chapters --&gt;
+                                &lt;section data-title="First Chapter"&gt;
+                                    This is chapter one.
+                                &lt;/section&gt;
 
-        &lt;section data-title="Second Chapter"&gt;
-            This is chapter two.
-        &lt;/section&gt;
+                                &lt;section data-title="Second Chapter"&gt;
+                                    This is chapter two.
+                                &lt;/section&gt;
 
-        &lt;!-- Navigation --&gt;
-        &lt;nav&gt;&lt;/nav&gt;
+                                &lt;!-- Navigation --&gt;
+                                &lt;nav&gt;&lt;/nav&gt;
+                            &lt;/main&gt;
 
-        &lt;!-- Copyright --&gt;
-        &lt;footer&gt;
-            © Your copyright information here
-        &lt;/footer&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+                            &lt;!-- Copyright --&gt;
+                            &lt;footer&gt;
+                                © Your copyright information here
+                            &lt;/footer&gt;
+                        &lt;/body&gt;
+                    &lt;/html&gt;
+                </code>
+            </pre>
             <p>
                 As you can see, each chapter is just a <code>&lt;section&gt;</code> element
                 with a <code>data-title</code> attribute. The title will be shown on the
@@ -185,7 +194,7 @@
             </p>
             <p>
                 All other HTML elements can be changed as you wish to apply some chrome.
-                Just leave the <code>&lt;section id ="toc"&gt;</code> and <code>&lt;nav&gt;</code>
+                Just leave the <code>&lt;section id="toc"&gt;</code> and <code>&lt;nav&gt;</code>
                 in place to get a Table of Contents and the navigation links.
             </p>
         </section>
@@ -211,26 +220,43 @@
                 with <code>npm add --save-dev highlight.js</code> and add change <tt>src/index.js</tt>
                 to this:
             </p>
-<pre><code class="javascript">import MiniTutorial from "mini-tutorial.js";
-import mtTheme from "mini-tutorial.js/themes/white.css";
+            <pre data-gobble>
+                <code class="javascript" data-gobble>
+                    import MiniTutorial from "mini-tutorial.js";
+                    import mtTheme from "mini-tutorial.js/themes/white.css";
 
-import hljs from 'highlight.js/lib/highlight'
-import hljsLangXML from 'highlight.js/lib/languages/xml'
-import hljsStyle from "highlight.js/styles/atom-one-light.css";
+                    import hljs from 'highlight.js/lib/highlight';
+                    import hljsLangXML from 'highlight.js/lib/languages/xml';
+                    import hljsLangJS from "highlight.js/lib/languages/javascript";
+                    import hljsStyle from "highlight.js/styles/atom-one-light.css";
 
-window.addEventListener("load", () =&gt; {
-    let mt = new MiniTutorial();
-    mt.start();
+                    window.addEventListener("load", () =&gt; {
+                        let mt = new MiniTutorial();
+                        mt.start();
 
-    hljs.registerLanguage('html', hljsLangXML);
-    document.querySelectorAll("pre code").forEach(el =&gt; hljs.highlightBlock(el));
-});</code></pre>
+                        hljs.registerLanguage("html", hljsLangXML);
+                        hljs.registerLanguage("javascript", hljsLangJS);
+                        document.querySelectorAll("pre code").forEach(el =&gt; hljs.highlightBlock(el));
+                    });
+                </code>
+            </pre>
             <p>
                 By importing <tt>highlight.js</tt> from <tt>src/index.js</tt> Parcel JS takes care
                 of the rest. The new library will be included in the final JavaScript bundle and
                 all unused parts of it will automatically be stripped. The final bundle will then
-                be minified to conserve even more bandwidth.
+                be minified to conserve even more bandwidth. Code listings can then be insterted
+                like this (note the <code>data-gobble</code> attribute which eats all leading
+                whitespace:)
             </p>
+            <pre data-gobble>
+                <code class="html" data-gobble>
+                    &lt;pre data-gobble&gt;
+                        &lt;code class="html" data-gobble&gt;
+                            &lt;!-- Insert HTML code here --&gt;
+                        &lt;/code&gt;
+                    &lt;/pre&gt;
+                </code>
+            </pre>
             <p>
                 It's just a tiny bit of tooling which makes a huge impact. Bravo to the Parcel JS
                 developers!
