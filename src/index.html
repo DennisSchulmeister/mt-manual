@@ -17,9 +17,9 @@
         <!-- Document chapters -->
         <section data-title="What is mini-tutorial.js?">
             <p>
-                Basically your are looking at it right now. <tt>mini-tutorial.js</tt> is a clean
-                and simple JavaScript application (consisting of only one class and one style sheet),
-                which allows you to create beautiful HTML-based documentation and tutorials
+                Basically your are looking at it right now. <span class="cmd">mini-tutorial.js</span>
+                is a clean and simple JavaScript application (consisting of only one class and some
+                style sheets), which allows you to create beautiful HTML-based documentation and tutorials
                 without much effort. All content is contained in a single HTML file using plain
                 and simple HTML markup.
             </p>
@@ -31,20 +31,20 @@
                 navigate.
             </p>
             <p>
-                Originally I created <tt>mini-tutorial.js</tt> for
+                Originally I created <span class="cmd">mini-tutorial.js</span> for
                 <a href="https://www.wpvs.de/" target="_blank">my lectures at DHBW Karlsruhe</a>
                 when I needed a simple template to create online tutorials for my students. It is,
                 if you will, the little sister of my other project
-                <tt><a href="https://github.com/DennisSchulmeister/lecture-slides.js" target="_blank">lecture-slides.js</a></tt>,
+                <a href="https://github.com/DennisSchulmeister/lecture-slides.js" target="_blank">lecture-slides.js</a>,
                 which is a full-blown HTML slideshow maker with a twist. As such both projects
                 share the same keyboard shortcuts and basic appearance.
             </p>
             <p>
-                This manual of course has also been written with <tt>mini-tutorial.js</tt>.
-                So just by reading some of its chapters you already get a good feeling
-                of what <tt>mini-tutorial.js</tt> and how it looks like. But if you like
+                This manual of course has also been written with <span class="cmd">mini-tutorial.js</span>.
+                So just by reading some of its chapters you already get a good feeling of what
+                <span class="cmd">mini-tutorial.js</span> and how it looks like. But if you like
                 you can completely change the looks of your documents by writing your own
-                style sheet. With <tt>mini-tutorial.js</tt> you have all the freedom you
+                style sheet. With <span class="cmd">mini-tutorial.js</span> you have all the freedom you
                 want, because at the end of the day it still is just HTML, CSS and tiny
                 little bit of JavaScript.
             </p>
@@ -55,7 +55,7 @@
                 Of course you can easily navigate between chapters with your mouse or the
                 touchscreen on mobile devices. Software developers however also appreciate
                 keyboard shortcuts. So here you are. They shortcuts are the same as for
-                <tt>lecture-slides.js</tt>, where I have simply copied the code from:
+                <span class="cmd">lecture-slides.js</span>, where I have simply copied the code from:
             </p>
             <ul>
                 <li>
@@ -70,43 +70,57 @@
             </p>
         </section>
 
-        <section data-title="Getting started – Downloading the template">
+        <section data-title="Getting started with one of the templates">
             <p>
-                Getting startet with <tt>mini-tutorial.js</tt> is easy. But the make it
-                even easier I have prepared a template project, which you can find on
-                GitHub: <a href="https://github.com/DennisSchulmeister/mt-template" target="_blank">mt-template</a>.
-                This project contains everything you need to write your own documents:
+                Getting startet with <span class="cmd">mini-tutorial.js</span> is easy.
+                Just grab one of the following templates from GitHub and off you go:
             </p>
             <ul>
                 <li>
-                    It uses <a href="https://www.npmjs.com/" target="_blank">npm</a> for
-                    dependencies and useful tools
+                    <span class="scr">mt-template-simple</span>: The most simple template, with the
+                    Table of Contents above text
                 </li>
                 <li>
-                    It uses the highly recommended <a href="https://parceljs.org/" target="_blank">Parcel JS</a>
+                    <span class="scr">mt-template-roundbox:</span> Template with background graphic and
+                    half-transparent content
                 </li>
                 <li>
-                    It contains all needed directories and files (which are very little)
+                    <span class="scr">mt-template-book:</span> Book-like template with chapters,
+                    sub-chapters and a sticky Table of Contents on the left
                 </li>
             </ul>
             <p>
-                Simply download the template project by clicking
-                <b>Clone or download</b> » <b>Download ZIP</b> on the GitHub
-                page and extract it anywhere on your computer. The start by
+                These projects contains everything you need to write your own documents:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://www.npmjs.com/" target="_blank">npm</a> for dependency management
+                </li>
+                <li>
+                    <a href="https://parceljs.org/" target="_blank">Parcel</a> to bundle the result
+                </li>
+                <li>
+                    All needed directories and files (which are very little)
+                </li>
+            </ul>
+            <p>
+                Simply download one of the templates by clicking
+                <span class="cmd">Clone or download</span> » <span class="cmd">Download ZIP</span>
+                on its GitHub page and extract it anywhere on your computer. Then start by
                 editing the following files:
             </p>
             <ul>
                 <li>
-                    <b><tt>LICENSE</tt>:</b> Either delete this file or change it the
+                    <span class="fn">LICENSE:</span> Either delete this file or change it the
                     license of your choice.
                 </li>
                 <li>
-                    <b><tt>README.md</tt>:</b> The same as with <tt>LICENSE</tt>. Either
-                    delete it, if you don't want to publish the source code anyway, or
+                    <span class="fn">README.md:</span> The same as with <span class="fn">LICENSE</span>.
+                    Either delete it, if you don't want to publish the source code anyway, or
                     change it according to your needs.
                 </li>
                 <li>
-                    <b><tt>src/index.html</tt>:</b> Put your document content here.
+                    <span class="fn">src/index.html:</span> Put your document content here.
                 </li>
             </ul>
             <p>
@@ -116,23 +130,23 @@
             </p>
             <ul>
                 <li>
-                    <code>npm install</code> to install all dependencies
+                    <span class="cmd">npm install</span> to install all dependencies
                 </li>
                 <li>
-                    <code>npm run start</code> to open a browser for a live preview
+                    <span class="cmd">npm run start</span> to open a browser for a live preview
                 </li>
                 <li>
-                    <code>npm run build</code> build a static version for uploading on a web server
+                    <span class="cmd">npm run build</span> build a static version for uploading on a web server
                 </li>
                 <li>
-                    <code>npm run watch</code> rebuild after each change without starting a local server
+                    <span class="cmd">npm run watch</span> rebuild after each change without starting a local server
                 </li>
                 <li>
-                    <code>npm run clean</code> just clean the dist directory
+                    <span class="cmd">npm run clean</span> just clean the dist directory
                 </li>
             </ul>
             <p>
-                When done, build the document and upload the content of the <tt>dist</tt>-directory
+                When done, build the document and upload the content of the <span class="fn">dist</span>-directory
                 to a web server.
             </p>
         </section>
@@ -165,12 +179,14 @@
                                 &lt;section id="toc" data-title="Table of Contents"&gt;&lt;/section&gt;
 
                                 &lt;!-- Document chapters --&gt;
-                                &lt;section data-title="First Chapter"&gt;
-                                    This is chapter one.
+                                &lt;section data-chapter data-title="First Chapter"&gt; &lt;!-- optional --&gt;
+
+                                &lt;section data-title="First Heading"&gt;
+                                    This is page one.
                                 &lt;/section&gt;
 
-                                &lt;section data-title="Second Chapter"&gt;
-                                    This is chapter two.
+                                &lt;section data-title="Second Heading"&gt;
+                                    This is page two.
                                 &lt;/section&gt;
 
                                 &lt;!-- Navigation --&gt;
@@ -201,29 +217,33 @@
 
         <section data-title="I thought mini-tutorial.js had no dependencies">
             <p>
-                Well, it hasn't. If you like you can simply copy the files <tt>mini-slides.js</tt>
-                and <tt>themes/white.css</tt> over to your project and create static HTML page
-                without any external dependency at all. The template project however uses
-                <tt>shelljs</tt> and <tt>parcel-bundler</tt> to provide some minimal cross-platform
-                tooling.
+                Well, it hasn't. If you like you can simply copy the files <span class="fn">mini-tutorial.js</span>
+                and <span class="fn">themes/*.css</span> over to your project and create static HTML page without any
+                external dependency at all. The template project however uses <span class="cmd">shelljs</span> and
+                <span class="cmd">parcel-bundler</span> to provide some minimal cross-platform tooling.
             </p>
             <p>
-                Having <tt>npm</tt> and these two dev-dependencies in place you don't have to duplicate
-                the <tt>mini-tutorial.js</tt> code for each and every document. Also you get a live
+                Having <span class="cmd">npm</span> and these two dev-dependencies in place you don't have to duplicate
+                the <span class="cmd">mini-tutorial.js</span> code for each and every document. Also you get a live
                 preview in your browser with hot-reloading and a minified and pruned JavaScript bundle
-                with <tt>mini-tutorial.js</tt> and all other JavaScript libraries you might want to use
+                with <span class="cmd">mini-tutorial.js</span> and all other JavaScript libraries you might want to use
                 for free.
             </p>
             <p>
-                As an example consider this document. On the previous page we had a syntax highlighted
-                code box. All I had to do was to add <tt>highlight.js</tt> as another dev-dependency
-                with <code>npm add --save-dev highlight.js</code> and add change <tt>src/index.js</tt>
-                to this:
+                As an example consider this document. On the previous page we had a syntax highlighted code box.
+                All I had to do was to add <span class="cmd">highlight.js</span> as another dev-dependency.
+            </p>
+            <p class="cmd">
+                npm add --save-dev highlight.js
+            </p>
+            <p>
+                Then I only needed to change <span class="fn">src/index.js</span> to this:
             </p>
             <pre data-gobble>
                 <code class="javascript" data-gobble>
                     import MiniTutorial from "mini-tutorial.js";
-                    import mtTheme from "mini-tutorial.js/themes/white.css";
+                    import mtTheme from "mini-tutorial.js/themes/white.css"; // Must be first!
+                    import mtCommonCSS from "mini-tutorial.js/themes/common.css";
 
                     import hljs from 'highlight.js/lib/highlight';
                     import hljsLangXML from 'highlight.js/lib/languages/xml';
@@ -241,12 +261,11 @@
                 </code>
             </pre>
             <p>
-                By importing <tt>highlight.js</tt> from <tt>src/index.js</tt> Parcel JS takes care
-                of the rest. The new library will be included in the final JavaScript bundle and
-                all unused parts of it will automatically be stripped. The final bundle will then
-                be minified to conserve even more bandwidth. Code listings can then be insterted
-                like this (note the <code>data-gobble</code> attribute which eats all leading
-                whitespace:)
+                By importing <span class="fn">highlight.js</span> from <span class="fn">src/index.js</span>
+                Parcel takes care of the rest. The new library will be included in the final JavaScript
+                bundle and all unused parts of it will automatically be stripped. The final bundle will then
+                be minified to conserve even more bandwidth. Code listings can then be insterted like this
+                (note the <code>data-gobble</code> attribute which eats all leading whitespace):
             </p>
             <pre data-gobble>
                 <code class="html" data-gobble>
@@ -258,17 +277,101 @@
                 </code>
             </pre>
             <p>
-                It's just a tiny bit of tooling which makes a huge impact. Bravo to the Parcel JS
+                It's just a tiny bit of tooling which makes a huge impact. Bravo to the Parcel
                 developers!
             </p>
         </section>
 
+        <section data-title="Commonly used markup">
+            <p>
+                If you import the <span class="fn">themes/common.css</span> as in the previous
+                example, the following commonly used markup utilities will be available:
+            </p>
+
+            <h3>Auto-numbered figures</h3>
+            <pre data-gobble>
+                <code class="html"data-gobble>
+                    &lt;figure&gt;
+                        &lt;img src="image-file.png" class="border" /&gt;
+                        &lt;figcaption&gt;Caption Text&lt;/figcaption&gt;
+                    &lt;/figure&gt;
+                </code>
+            </pre>
+            <figure>
+                <img src="img/figure-example.jpg" class="border" />
+                <figcaption>
+                    Auto-numbered figures, what's not to like? <br />
+                    Image Source: <a href="https://pixabay.com/de/mops-hund-m%C3%BCrrisch-niedlich-tier-1209129/" target="_blank">Pixabay: Free-Photos</a>
+                </figcaption>
+            </figure>
+            <p>
+                In order to use another text instead of “Fig.” before the figure
+                number, overwrite it in your custom stylesheet with the CSS variable
+                <span class="scr">--figure-short-code</span> like this:
+            </p>
+            <pre data-gobble>
+                <code class="css" data-gobble>
+                    :root {
+                        --figure-short-code: 'Abb. ';
+                    }
+                </code>
+            </pre>
+
+            <h3>Big skip between paragraphs</h3>
+            <p>
+                In case you need a big skip between two paragraphs, akin to the LaTeX command
+                <code>\bigskip</code>, you can use this:
+            </p>
+            <pre data-gobble>
+                <code class="html" data-gobble>
+                    &lt;div class="bigskip"&gt;&lt;/div&gt;
+                </code>
+            </pre>
+
+            <h3>Filenames, Commands, Screen Output, Keyboard Codes</h3>
+            <p>
+                Technical documents often need to describe keyboard codes,
+                file names, commands or an output the user sees on screen.
+                These can be marked up like this:
+            </p>
+            <pre data-gobble>
+                <code class="hmtl" data-gobble>
+                    Edit file &lt;span class="fn"&gt;file name&lt;/span&gt;. &lt;br /&gt;
+                    Enter command &lt;span class="cmd"&gt;command&lt;/span&gt; &lt;br /&gt;
+                    The screen will show &lt;span class="scr"&gt;some output&lt;/span&gt; &lt;br /&gt;
+                    Then press &lt;kbd&gt;META&lt;/kbd&gt;+&lt;kbd&gt;Q&lt;/kbd&gt; to quit.
+                </code>
+            </pre>
+            <p>
+                The result will then be:
+            </p>
+            <p class="border" style="font-size: 90%; padding: 1em;">
+                Edit file <span class="fn">file name</span>. <br />
+                Enter command <span class="cmd">command</span> <br />
+                The screen will show <span class="scr">some output</span> <br />
+                Then press <kbd>META</kbd>+<kbd>Q</kbd> to quit.
+            </p>
+
+            <h3>Vertical alignment in tables</h3>
+            <p>
+                Table contents will automatically aligned to the top, courtesy
+                of this CSS rule:
+            </p>
+            <pre data-gobble>
+                <code class="css" data-gobble>
+                    td {
+                        vertical-align: top;
+                    }
+                </code>
+            </pre>
+        </section>
+
         <section data-title="Building more than one document">
             <p>
-                If you look closely at <tt>package.json</tt> in the template project,
-                you will see that the parcel bundler is called with a <tt>src/*.html</tt>
+                If you look closely at <span class="fn">package.json</span> in the template project,
+                you will see that the parcel bundler is called with a <span class="fn">src/*.html</span>
                 glob pattern. This makes it easy to build several projects from the
-                same source tree. Simply copy the <tt>src/index.html</tt> file and
+                same source tree. Simply copy the <span class="fn">src/index.html</span> file and
                 create as many HTML files as you want to build documents.
             </p>
         </section>
