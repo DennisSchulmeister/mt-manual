@@ -15,7 +15,7 @@
         <section id="toc" data-title="Table of Contents"></section>
 
         <!-- Document chapters -->
-        <section data-title="What is mini-tutorial.js?">
+        <section data-title="What Is mini-tutorial.js?">
             <p>
                 Basically your are looking at it right now. <span class="cmd">mini-tutorial.js</span>
                 is a clean and simple JavaScript application (consisting of only one class and some
@@ -50,7 +50,7 @@
             </p>
         </section>
 
-        <section data-title="Using the keyboard shortcuts">
+        <section data-title="Using the Keyboard Shortcuts">
             <p>
                 Of course you can easily navigate between chapters with your mouse or the
                 touchscreen on mobile devices. Software developers however also appreciate
@@ -70,7 +70,7 @@
             </p>
         </section>
 
-        <section data-title="Getting started with one of the templates">
+        <section data-title="Getting Started with One of the Templates">
             <p>
                 Getting startet with <span class="cmd">mini-tutorial.js</span> is easy.
                 Just grab one of the following templates from GitHub and off you go:
@@ -151,7 +151,7 @@
             </p>
         </section>
 
-        <section data-title="How to add chapters to a document?">
+        <section data-title="How To Add Chapters To a Document?">
             <p>
                 Adding new chapters is easy. Here you can see how the template
                 HTML file looks like:
@@ -215,7 +215,34 @@
             </p>
         </section>
 
-        <section data-title="I thought mini-tutorial.js had no dependencies">
+        <section data-title="Cloned Sections">
+            <p>
+                A rather obscure feature added in version 1.0.8 are cloned sections. This
+                allows you to duplicate existing sections without copying their HTML code.
+                Say you have a section like this:
+            </p>
+            <pre data-gobble>
+                <code class="html" data-gobble>
+                    &lt;section id="sec-safety" data-title="Safety Precautions"&gt;
+                        Some very important notes here …
+                    &lt;/section&gt;
+                </code>
+            </pre>
+            <p>
+                Then you can insert the exact same section at another location like this:
+            </p>
+            <pre data-gobble>
+                <code class="html" data-gobble>
+                    &lt;section data-clone="#sec-safety"&gt;&lt;/section&gt;
+                </code>
+            </pre>
+            <p>
+                If the cloned section has no <code>data-title</code> attribute, the cloned
+                section will also have the same title as the original section.
+            </p>
+        </section>
+
+        <section data-title="I Thought mini-tutorial.js Had No Dependencies">
             <p>
                 Well, it hasn't. If you like you can simply copy the files <span class="fn">mini-tutorial.js</span>
                 and <span class="fn">themes/*.css</span> over to your project and create static HTML page without any
@@ -282,7 +309,7 @@
             </p>
         </section>
 
-        <section data-title="Commonly used markup">
+        <section data-title="Commonly Used Markup">
             <p>
                 If you import the <span class="fn">themes/common.css</span> as in the previous
                 example, the following commonly used markup utilities will be available:
@@ -366,7 +393,7 @@
             </pre>
         </section>
 
-        <section data-title="Building more than one document">
+        <section data-title="Building More Than One Document">
             <p>
                 If you look closely at <span class="fn">package.json</span> in the template project,
                 you will see that the parcel bundler is called with a <span class="fn">src/*.html</span>
