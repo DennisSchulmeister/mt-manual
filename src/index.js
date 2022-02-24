@@ -1,52 +1,39 @@
-"use strict";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import MiniTutorial from "mini-tutorial.js";
-import mtThemeWhite from "mini-tutorial.js/themes/white.css";
-import mtThemeCommon from "mini-tutorial.js/themes/common.css";
-import myStylesheet from "./style.css";
+import MiniTutorial from "@dschulmeis/mini-tutorial.js";
+import "@dschulmeis/mini-tutorial.js/themes/white.css";
+// Bug in esbuild-plugin-less and others: Module paths are not recognized!
+import "../node_modules/@dschulmeis/mini-tutorial.js/themes/bootstrap.less";
 
-import hljs from "highlight.js/lib/highlight";
-import hljsLangXML from "highlight.js/lib/languages/xml";
-import hljsLangCSS from "highlight.js/lib/languages/css";
-import hljsLangJS from "highlight.js/lib/languages/javascript";
-import hljsStyle from "highlight.js/styles/atom-one-light.css";
+import LS_Plugin_ExtraTags from "@dschulmeis/ls-plugin-extra-tags";
+import LS_Plugin_Markdown from "@dschulmeis/ls-plugin-markdown";
 
-async function fetchChapters(chapters, callback) {
-    let response = null;
-    let html = "";
+import LS_Plugin_HighlightJS from "@dschulmeis/ls-plugin-highlight.js";
+import HLJS_Language_XML from 'highlight.js/lib/languages/xml';
+import HLJS_Language_CSS from 'highlight.js/lib/languages/css';
+import HLJS_Language_JS from "highlight.js/lib/languages/javascript";
+import HLJS_Language_JSON from "highlight.js/lib/languages/json";
+import "highlight.js/styles/atom-one-light.css";
 
-    for(let i = 0; i < chapters.length; i++) {
-        response = await fetch(chapters[i]);
-        html += await response.text();
-    }
+import "./style.less";
 
-    if (document.readyState == "complete") {
-        callback(html);
-    } else {
-        window.addEventListener("load", () => callback(html));
-    }
-}
+window.addEventListener("load", () => {
+    let mt = new MiniTutorial({
+        plugins: [
+            new LS_Plugin_Markdown(),
+            new LS_Plugin_ExtraTags(),
+            new LS_Plugin_HighlightJS({
+                languages: {
+                    html: HLJS_Language_XML,
+                    css: HLJS_Language_CSS,
+                    javascript: HLJS_Language_JS,
+                    json: HLJS_Language_JSON,
+                },
+                highlightAll: true,
+            }),
+        ],
+    });
 
-function startApplication(html) {
-    if (html) {
-        let main = document.querySelector("main");
-        main.innerHTML = html;
-    }
-
-    hljs.registerLanguage("html", hljsLangXML);
-    hljs.registerLanguage("css", hljsLangCSS);
-    hljs.registerLanguage("javascript", hljsLangJS);
-    document.querySelectorAll("pre code").forEach(el => hljs.highlightBlock(el));
-
-    let mt = new MiniTutorial();
     mt.start();
-}
-
-fetchChapters([
-    // Add HTML files here if you want to split the document.
-    // The HTML files should only contain <section>-elements without <html>/<head>/<body>
-    //
-    // "01-intro.html",
-    // "02-chapter2.html",
-    // ...
-], startApplication);
+});

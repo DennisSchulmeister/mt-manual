@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>mini-tutorial.js manual</title>
+
+        <script src="_bundle.js"></script>
+        <link rel="stylesheet" href="_bundle.css" />
+        <link rel="shortcut icon" href="favicon.png" />
+    </head>
+    <body class="hidden">
+        <!-- Page Header and Table of Contents -->
+        <header>
+            <h1>mini-tutorial.js manual</h1>
+            <p class="subtitle">
+                Example and documentation for mini-tutorial.js
+            </p>
+
+            <section id="toc" data-title="Table of Contents"></section>
+        </header>
+
+        <!-- Document chapters -->
+        <main>
+            <!-- ========================= -->
+            <!-- What is mini-tutorial.js? -->
+            <!-- ========================= -->
+            <section data-title="What is mini-tutorial.js?" class="markdown">
+                    Basically your are looking at it right now. <span class="cmd">mini-tutorial.js</span>
+                    is a clean and simple JavaScript application (consisting of only one class and some
+                    style sheets), which allows you to create beautiful HTML-based documentation and tutorials
+                    without much effort. All content is contained in a single HTML file using plain
+                    and simple HTML markup.
+
+                    The JavaScript part renders a simple Table of Contents, a few navigation links
+                    at the bottom and makes sure that only one chapter at a time is visible. This
+                    allows the reader to read the document like a simple book without much scrolling.
+                    Also this makes larger documents appear not as overwhelming and be easier to
+                    navigate.
+
+                    Originally I created <span class="cmd">mini-tutorial.js</span> for
+                    [my lectures at DHBW Karlsruhe](https://www.wpvs.de)
+                    when I needed a simple template to create online tutorials for my students.
+                    In that regard it is the little brother of
+                    [lecture-slides.js](https://github.com/DennisSchulmeister/lecture-slides.js)
+                    my HTML slideshow maker with a twist. As such both projects are compatible
+                    to a certain extend and share a similar look and feel.
+            </section>
+
+            <!-- ================================== -->
+            <!-- Navigation from Chapter to Chapter -->
+            <!-- ================================== -->
+            <section data-title="Navigation from Chapter to Chapter" class="markdown">
+                    Of course you can easily navigate between chapters with your mouse or the
+                    touchscreen on mobile devices. But if you are like me you will also
+                    appreciate the simple keyboard shortcuts:
+
+                     * <kbd>Arrow Left</kbd>: Previous Chapter
+                     * <kbd>Arrow Right</kbd>, <kbd>ENTER</kbd>: Next Chapter
+
+                    On touch devices you can also swipe left and right.
+            </section>
+
+            <!-- ========================================= -->
+            <!-- Getting Started with One of the Templates -->
+            <!-- ========================================= -->
+            <section data-title="Getting Started with One of the Templates" class="markdown">
+                The easiest way to start a new document is to download one of the templates
+                and change its source code. While basically <span class="cmd">mini-tutorial.js</span>
+                is just a simple JavaScript library that needs to be integrated into a surrounding
+                HTML document, the templates provide a ready-to-use configuration consisting of …
+
+                 * The right HTML structure to make the layout work
+                 * The necessary JavaScript code to configure and start <span class="cmd">mini-tutorial.js</span>
+                 * The LESS preprocessor for custom styling
+                 * All needed <span class="cmd">npm</span> dependencies (though there are not many)
+                 * [esbuild](https://esbuild.github.io/) as a bundler to develop and compile the document
+
+                <img src="img/file-layout.png" class="border d-block w-100 mb-3" />
+
+                The following files in the templates need to be changed:
+
+                 * <span class="fn">README.md</span>: Can be deleted, if you don't need it
+                 * <span class="fn">LICENSE</span>: Should be changed or deleted if needed
+                 * <span class="fn">static/index.html</span>: The document content goes here
+                 * <span class="fn">src/index.js</span>: Can be changed to configure
+                   <span class="cmd">mini-tutorial.js</span> and its plugins
+                 * <span class="fn">package.json</span>: Some dependencies can be removed,
+                   if not all pre-configured plugins are needed. Also it is a good idea to
+                   change the project meta data here.
+
+                If needed, multiple HTML documents can be created by copying
+                <span class="fn">static/index.html</span>. Since all HTML files
+                are just static content, there is no limitation on how many
+                HTML files can be reside in the same prohect and how the content
+                of the <span class="fn">static/</span> directory is organized.
+            </section>
+
+            <!-- ====================================== -->
+            <!-- General Structure of the HTML document -->
+            <!-- ====================================== -->
+            <section data-title="General Structure of the HTML document">
+                <p>
+                    The exact structure of the HTML document depends on the layout, that
+                    is used to render the document. Most layouts (with exception to the
+                    book layout) are using the following structure:
+                </p>
+                <source-code language="html">
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html lang="en"&gt;
+                        &lt;head&gt;
+                            &lt;meta charset="utf-8" /&gt;
+                            &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+                            &lt;title&gt;__Document Title__&lt;/title&gt;
+
+                            &lt;script src="_bundle.js"&gt;&lt;/script&gt;
+                            &lt;link rel="stylesheet" href="_bundle.css" /&gt;
+                            &lt;link rel="shortcut icon" href="favicon.png" /&gt;
+                        &lt;/head&gt;
+                        &lt;body class="hidden"&gt;
+                            &lt;!-- Page Header and Table of Contents --&gt;
+                            &lt;header&gt;
+                                &lt;h1&gt;__Document Title__&lt;/h1&gt;
+                                &lt;p class="subtitle"&gt;
+                                    Catchphrase or subtitle of the document
+                                &lt;/p&gt;
+                                &lt;section id="toc" data-title="Table of Contents"&gt;&lt;/section&gt;
+                            &lt;/header&gt;
+
+                            &lt;!-- Document chapters --&gt;
+                            &lt;main&gt;
+                                &lt;section data-title="First Chapter"&gt;
+                                    This is chapter one.
+                                &lt;/section&gt;
+
+                                &lt;section data-title="Second Chapter"&gt;
+                                    This is chapter two.
+                                &lt;/section&gt;
+                            &lt;/main&gt;
+
+                            &lt;!-- Navigation and Copyright --&gt;
+                            &lt;footer&gt;
+                                &lt;nav&gt;&lt;/nav&gt;
+                                &lt;p&gt;
+                                    © Your copyright information here
+                                &lt;/p&gt;
+                            &lt;/footer&gt;
+                        &lt;/body&gt;
+                    &lt;/html&gt;
+                </source-code>
+                <p>
+                    With the book layout, the body needs to be slightly changed
+                    to move the table of contents to a sidebar. Also it makes
+                    sense to structure the document with chapters and sub-chapters,
+                    which is actually possible with all layouts.
+                </p>
+                <source-code language="html">
+                    &lt;body class="hidden"&gt;
+                        &lt;!-- Page Header and Table of Contents --&gt;
+                        &lt;header&gt;
+                            &lt;h1&gt;__Document Title__&lt;/h1&gt;
+
+                            &lt;p class="subtitle"&gt;
+                                Catchphrase or subtitle of the document
+                            &lt;/p&gt;
+                        &lt;/header&gt;
+
+                        &lt;!-- Table of Contents --&gt;
+                        &lt;aside&gt;
+                            &lt;section id="toc" data-title_="Table of Contents"&gt;&lt;/section&gt;
+                        &lt;/aside&gt;
+
+                        &lt;!-- Document chapters --&gt;
+                        &lt;main&gt;
+                            &lt;section data-chapter data-title="Chapter One"&gt;&lt;/section&gt;
+
+                            &lt;section data-title="First Sub-Chapter"&gt;
+                                This is sub-chapter one.
+                            &lt;/section&gt;
+
+                            &lt;section data-title="Second Sub-Chapter"&gt;
+                                This is sub-chapter two.
+                            &lt;/section&gt;
+                        &lt;/main&gt;
+
+                        &lt;!-- Navigation and Copyright --&gt;
+                        &lt;footer&gt;
+                            &lt;nav&gt;&lt;/nav&gt;
+                            &lt;p&gt;
+                                © Your copyright information here
+                            &lt;/p&gt;
+                        &lt;/footer&gt;
+                    &lt;/body&gt;
+                </source-code>
+                <p>
+                    In both case the main content resides on multiple sections
+                    inside the main element. The header and the footer can be
+                    adjusted at wish to provide always visible information like
+                    the document title or a copyright notice.
+                </p>
+                <p>
+                    Please note, that <src-code language="html">&lt;h1&gt;</src-code>
+                    and <src-code language="html">&lt;h2&gt;</src-code> are used for
+                    the document and chapter titles. If headings are needed inside the
+                    text it is recommended to use <src-code language="html">&lt;h3&gt;</src-code>
+                    onwards.
+                </p>
+            </section>
+
+            <!-- =============== -->
+            <!-- Cloned Sections -->
+            <!-- =============== -->
+            <section data-title="Cloned Sections">
+                <p>
+                    A rather obscure feature is cloned sections. This allows to duplicate existing
+                    sections without copying their HTML code. Say you have a section like this:
+                </p>
+                <source-code language="html">
+                    &lt;section id="sec-safety" data-title="Safety Precautions"&gt;
+                        Some very important notes here …
+                    &lt;/section&gt;
+                </source-code>
+                <p>
+                    Then the exact same section can be placed at another location like this:
+                </p>
+                <source-code language="html">
+                    &lt;section data-clone="#sec-safety"&gt;&lt;/section&gt;
+                </source-code>
+                <p>
+                    If the cloned section has no <code>data-title</code> attribute, the cloned
+                    section will also have the same title as the original section.
+                </p>
+            </section>
+
+            <!-- ==================== -->
+            <!-- Commonly Used Markup -->
+            <!-- ==================== -->
+            <section data-title="Commonly Used Markup">
+                <p>
+                    Most content is just plain HTML. However, all layouts (ore more specificaly
+                    the file <span class="fn">themes/common.css</span>) provide some often-needed
+                    styling and utilities.
+                </p>
+
+                <h3>Auto-numbered figures</h3>
+                <source-code language="html">
+                    &lt;figure&gt;
+                        &lt;img src="image-file.png" class="border" /&gt;
+                        &lt;figcaption&gt;Caption Text&lt;/figcaption&gt;
+                    &lt;/figure&gt;
+                </source-code>
+                <figure>
+                    <img src="img/figure-example.jpg" class="border" />
+                    <figcaption>
+                        Me after a long night of coding …
+                        (Image Source: <a href="https://pixabay.com/de/mops-hund-m%C3%BCrrisch-niedlich-tier-1209129/" target="_blank">Pixabay: Free-Photos</a>)
+                    </figcaption>
+                </figure>
+                <p>
+                    The "Fig." prefix can simply be changed in a local stylesheet like this.
+                </p>
+                <source-code language="css">
+                    :root {
+                        --figure-short-code: 'Abb. ';
+                    }
+                </source-code>
+
+                <h3>Big skip between paragraphs</h3>
+                <p>
+                    If a big skip akin to the LaTeX command <code>\bigskip</code> is needed,
+                    the css class <code>skip</code> can be used:
+                </p>
+                <source-code language="html">
+                    &lt;div class="skip"&gt;&lt;/div&gt;
+                </source-code>
+
+                <h3>Filenames, Commands, Screen Output, Keyboard Codes</h3>
+                <p>
+                    Technical documents often need to describe keyboard codes,
+                    file names, commands or an output the user sees on screen.
+                    These can be marked up like this:
+                </p>
+                <source-code language="html">
+                    Edit file &lt;span class="fn"&gt;file name&lt;/span&gt;. &lt;br /&gt;
+                    Enter command &lt;span class="cmd"&gt;command&lt;/span&gt; &lt;br /&gt;
+                    The screen will show &lt;span class="scr"&gt;some output&lt;/span&gt; &lt;br /&gt;
+                    Then press &lt;kbd&gt;META&lt;/kbd&gt;+&lt;kbd&gt;Q&lt;/kbd&gt; to quit.
+                </source-code>
+                <p>
+                    The result will then be:
+                </p>
+                <p class="border" style="font-size: 90%; padding: 1em;">
+                    Edit file <span class="fn">file name</span>. <br />
+                    Enter command <span class="cmd">command</span> <br />
+                    The screen will show <span class="scr">some output</span> <br />
+                    Then press <kbd>META</kbd>+<kbd>Q</kbd> to quit.
+                </p>
+            </section>
+
+            <!-- =============== -->
+            <!-- Markdown Syntax -->
+            <!-- =============== -->
+            <section data-title="Markdown Syntax">
+                <p>
+                    If the plugin <span class="fn">ls-plugin-markdown</span> is loaded,
+                    markdown syntax can be used in any HTML block element with the class
+                    <code>markdown</code> or inline element with the class <code>md</code>:
+                </p>
+                <source-code language="html">
+                    &lt;section data-title="Markdown Example" class="markdown"&gt;
+                        ### A Hading, Paragraph and a List
+
+                        This is a simple paragraph of text. Next will follow an
+                        unordered list.
+
+                         * List item 1
+                         * List item 2
+                         * List item 3
+                    &lt;/section&gt;
+                </source-code>
+                <p>
+                    Markdown rendering is done by the <span class="cmd">markdown-it</span>
+                    library. CSS classes can be added via curly braces like this:
+                </p>
+                <source-code language="plaintext">
+                    This is a simple paragraph. {danger}
+                </source-code>
+                <p>
+                    Sometimes using custom HTML elements (see next chapter) doesn't work
+                    well inside a markdown rendered element. In that case the custom
+                    element must not be used inside an HTML element with the classes
+                    <code>markdown</code> or <code>md</code>.
+                </p>
+            </section>
+
+            <!-- ==================== -->
+            <!-- Custom HTML Elements -->
+            <!-- ==================== -->
+            <section data-title="Custom HTML Elements">
+                <h3>Syntax Highlighting</h3>
+                <p>
+                    The plugin <span class="fn">ls-plugin-highlight.js</span>
+                    provides custom HTML elements for syntax highlighed source
+                    code. Syntax highlighted code blocks can then be inserted
+                    like this:
+                </p>
+                <source-code language="html">
+                    &lt;source-code language="python"&gt;
+                    if __name__ == "__main__":
+                        print("Hello, Python!")
+                    &lt;/source-code&gt;
+                </source-code>
+                <p>
+                    For inline usage the element <code>&lt;src-code&gt;</code>
+                    can be used similarily:
+                </p>
+                <source-code language="html">
+                    &lt;p&gt;
+                        The main logic resides in the
+                        &lt;src-code language="python"&gt;main()&lt;/src-code&gt;
+                        function.
+                    &lt;/p&gt;
+                </source-code>
+
+                <h3>Bootstrap Shorthands</h3>
+                <p>
+                    If Bootstrap is used, the plugin <span class="fn">ls-plugin-extra-tags</span>
+                    greatly reduces the pain in defining grid layouts, carousels, accordions and
+                    many more. See the following examples and their source code below.
+                </p>
+                <lsx-tab-pages>
+                    <lsx-tab-page title="Determine Line Breaks">
+                        <source-code language="javascript">
+                            export function determineLinebreaks(text) {
+                                if (text.includes("\r\n")) return "\r\n";
+                                else if (text.includes("\n")) return "\n";
+                                else if (text.includes("\r")) return "\r";
+                                else return "";
+                            }
+                        </source-code>
+                    </lsx-tab-page>
+                    <lsx-tab-page title="Remove Leading Line Breaks">
+                        <source-code language="javascript">
+                            export function removeLeadingLinebreaks(text) {
+                                let linebreak = determineLinebreaks(text);
+                                if (linebreak === "") return text;
+
+                                while (text.startsWith(linebreak)) {
+                                    text = text.slice(linebreak.length);
+                                }
+
+                                return text;
+                            }
+                        </source-code>
+                    </lsx-tab-page>
+                </lsx-tab-pages>
+                <lsx-ul emoji="🐻">
+                    <li>@dschulmeis/mini-tutorial.js</li>
+                    <li>@dschulmeis/lecture-slides.js</li>
+                    <li>@dschulmeis/ls-plugin-extra-tags</li>
+                    <li>@dschulmeis/ls-plugin-highlight.js</li>
+                    <li>@dschulmeis/ls-markdown</li>
+                </lsx-ul>
+                <source-code language="html">
+                    &lt;lsx-tab-pages&gt;
+                        &lt;lsx-tab-page title="Determine Line Breaks"&gt;
+                            &lt;source-code language="javascript"&gt;
+                                export function determineLinebreaks(text) {
+                                    if (text.includes("\r\n")) return "\r\n";
+                                    else if (text.includes("\n")) return "\n";
+                                    else if (text.includes("\r")) return "\r";
+                                    else return "";
+                                }
+                            &lt;/source-code&gt;
+                        &lt;/lsx-tab-page&gt;
+                        &lt;lsx-tab-page title="Remove Leading Line Breaks"&gt;
+                            &lt;source-code language="javascript"&gt;
+                                export function removeLeadingLinebreaks(text) {
+                                    let linebreak = determineLinebreaks(text);
+                                    if (linebreak === "") return text;
+
+                                    while (text.startsWith(linebreak)) {
+                                        text = text.slice(linebreak.length);
+                                    }
+
+                                    return text;
+                                }
+                            &lt;/source-code&gt;
+                        &lt;/lsx-tab-page&gt;
+                    &lt;/lsx-tab-pages&gt;
+
+                    &lt;lsx-ul emoji="🐻"&gt;
+                        &lt;li&gt;@dschulmeis/mini-tutorial.js&lt;/li&gt;
+                        &lt;li&gt;@dschulmeis/lecture-slides.js&lt;/li&gt;
+                        &lt;li&gt;@dschulmeis/ls-plugin-extra-tags&lt;/li&gt;
+                        &lt;li&gt;@dschulmeis/ls-plugin-highlight.js&lt;/li&gt;
+                        &lt;li&gt;@dschulmeis/ls-markdown&lt;/li&gt;
+                    &lt;/lsx-ul&gt;
+                </source-code>
+            </section>
+
+            <!-- ========================== -->
+            <!-- Notes on the file index.js -->
+            <!-- ========================== -->
+            <section data-title="Notes on the file index.js">
+                <p>
+                    Technicaly speaking, each document is a single page app that executes the
+                    JavaScript file `src/index.js`. There the `mini-tutorial.js` main object is
+                    created and its `start()` method is called:
+                </p>
+
+                <source-code language="javascript">
+                    import "bootstrap/dist/css/bootstrap.min.css";
+                    import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+                    import MiniTutorial from "@dschulmeis/mini-tutorial.js";
+                    import "@dschulmeis/mini-tutorial.js/themes/book.css";
+                    // Bug in esbuild-plugin-less and others: Module paths are not recognized!
+                    import "../node_modules/@dschulmeis/mini-tutorial.js/themes/bootstrap.less";
+
+                    import LS_Plugin_Markdown from "@dschulmeis/ls-plugin-markdown";
+
+                    import LS_Plugin_HighlightJS from "@dschulmeis/ls-plugin-highlight.js";
+                    import HLJS_Language_JSON from "highlight.js/lib/languages/json";
+                    import "highlight.js/styles/atom-one-light.css";
+
+                    import "./style.less";
+
+                    window.addEventListener("load", () => {
+                        let mt = new MiniTutorial({
+                            download: [
+                            // Add HTML files here if you want to split the document.
+                            ],
+                            plugins: [
+                            new LS_Plugin_Markdown(),
+                            new LS_Plugin_ExtraTags(),
+                            new LS_Plugin_HighlightJS({
+                                languages: {
+                                    javascript: HLJS_Language_JS,
+                                },
+                                highlightAll: true,
+                            }),
+                            ],
+                        });
+
+                        mt.start();
+                    });
+                </source-code>
+
+                <div class="markdown">
+                    Here are a few notes to keep in mind when making changes to this file:
+
+                     * If Bootstrap is used always import it before
+                       <span class="cmd">mini-tutorial.js</span> to avoid styling conflicts.
+
+                     * After the <span class="cmd">mini-tutorial.js</span> main class always
+                       import one of the contained stylesheets, if you want to use the pre-defined
+                       layouts.
+
+                     * If you want to roll your own stylesheet with custom layout, you still
+                       might want to import <span class="fn">themes/common.css</span> to remain
+                       somewhat compatible with the built-in layouts.
+
+                     * After the layout stylesheet you might want to import
+                       <span class="fn">themes/bootstrap.less</span> if you are using Bootstrap
+                       to provide a more modern look. This requires a bundler that can transform
+                       LESS to CSS code, which is already set up in the templates.
+
+                     * Use the file <span class="fn">src/style.less</span> for custom styling as
+                       you wish.
+
+                     * Regarding plugins, the same plugins as for <span class="cmd">lecture-slides.js</span>
+                       can be used to provide Markdown syntax and custom HTML elements for source code
+                       syntax highlighting or often-needed Bootstrap elements.
+
+                     * When using both plugins, loading <span class="fn">ls-plugin-markdown</span>
+                       before <span class="fn">ls-plugin-extra-tags</span> may help if some
+                       <code>&lt;lsx-…&gt;</code> elements inside a markdown text are not rendered
+                       correctly. If that doesn't help, move the <code>&lt;lsx-…&gt;</code> elements
+                       out of the markdown text.
+                </div>
+            </section>
+        </main>
+
+        <!-- Navigation and Copyright --><!-- Copyright -->
+        <footer>
+            <nav></nav>
+            <table>
+                <tr>
+                    <td style="padding-right: 1em;">
+                        <img src="https://licensebuttons.net/l/by/4.0/88x31.png" />
+                    </td>
+                    <td>
+                        © 2018 – 2022 Dennis Schulmeister-Zimolong &lt;dennis@pingu-mail.de&gt; <br/>
+                        This manual is licensed under a
+                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
+                    </td>
+                </tr>
+            </table>
+        </footer>
+    </body>
+</html>
